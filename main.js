@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-const config = require("./secret/config.json")
+const config = require("./secret/config")
 const fs = require('fs');
 
 
@@ -49,6 +49,7 @@ bot.on("message", async message => {
     if (message.channel.type === "dm") return;
 
     let prefix = config.prefix;
+    if (message.content.indexOf(prefix) !== 0) return;
     let messageArray = message.content.split(" ");
     let command = messageArray[0];
     let args = messageArray.slice(1);
